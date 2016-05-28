@@ -32,22 +32,35 @@
 </section>
 -->
   <style>
-    body {
-      background: lightgrey;
-    }
-    #image-holder{
-      width:400px;
-      text-align: center;
-      margin: 0 auto;
-    }
-    #buttons{
-      text-align: center;
-      margin: 50px 0;
-    }
-    button{
-      width:300px;
-      height:100px;
-    }
+   body {
+		width: 960px;
+		font-size: 18px;
+		/*
+		background-size: 1600px 960px;
+		*/
+		background: lightgrey;
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+
+	.main-container {
+		background: #777;
+		display: block;
+		float: center;
+		width: 700px;
+		overflow: hidden;
+		height: 500px;
+		margin: 100px;
+	}
+
+	#buttons{
+	  text-align: center;
+	  margin: 50px 0;
+	}
+	button{
+	  width:300px;
+	  height:100px;
+	}
   </style>
 
 <div id="timer-display"> Time Remaining: 30</div>
@@ -105,7 +118,7 @@ Correct answers:<br>
 </body>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
-<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
 <script language="JavaScript">
 
 
