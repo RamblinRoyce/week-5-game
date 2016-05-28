@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>GoT Trivia</title>
+	<title>Trivia Game</title>
 
 		<!-- Bootstrap is used to make game look nicer -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -31,8 +31,30 @@
 	
 </section>
 -->
+  <style>
+    body {
+      background: lightgrey;
+    }
+    #image-holder{
+      width:400px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    #buttons{
+      text-align: center;
+      margin: 50px 0;
+    }
+    button{
+      width:200px;
+      height:100px;
+    }
+  </style>
 
-<div id="timer-display"> Time Remaining: 20</div>
+<div id="buttons">
+    <button id="start"><h2>Start</h2></button>
+</div>
+
+<div id="timer-display"> Time Remaining: 30</div>
 
 
 <h3>Web Design Quiz</h3>
@@ -76,54 +98,35 @@ Correct answers:<br>
 
 </body>
 
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+<script type="text/javascript" src="app.js"></script>
 <script language="JavaScript">
 
+window.onload = function(){
+  $('#start').on('click', timer.start);
+};
+
 var timer = {
-  time:20,
-  lap:1,
+  time:30,
   reset: function(){
-    timer.time = 0;
-    timer.lap = 1;
-    $('#display').html('00:00');
-    $('#laps').html('');
+    timer.time = 30;
+    $('#timer-display').html('Time Remaining: 30');
   },
   start: function(){
     counter = setInterval(timer.count, 1000);
   },
-  stop: function(){
-    clearInterval(counter);
-  },
-  recordLap: function(){
-    //if you use "this" here, it will point to the lap button, not this object.
-    var converted = timer.timeConverter(timer.time);
-    $('#laps').append('<p>Lap ' + timer.lap + ' : ' + converted + '</p>');
-    timer.lap++;
-  },
   count: function(){
-    timer.time++;
-    var converted = timer.timeConverter(timer.time);
-    $('#display').html(converted);
-  },
-  timeConverter: function(t){
-    var minutes = Math.floor(t/60);
-    var seconds = t - (minutes * 60);
-    if (seconds < 10){
-      seconds = "0" + seconds;
-    }
-    if (minutes === 0){
-      minutes = "00";
-    } else if (minutes < 10){
-      minutes = "0" + minutes;
-    }
-    return minutes + ":" + seconds;
+    timer.time--;
+    $('#timer-display').html('Time Remaining: ' + timer.time);
   }
+};
 
 function timeUp(){
   audio.play();
   $('#time-left').html('<h2>Time\'s Up!</h2>');
   alert('time is up');
 }
+
 
 		<!-- This script and many more are available free online at -->
 		<!-- The JavaScript Source!! http://www.javascriptsource.com -->
