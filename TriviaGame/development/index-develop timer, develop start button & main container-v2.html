@@ -7,11 +7,18 @@
 		<!-- Bootstrap is used to make game look nicer -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 
-	<style type="text/css"></style>
+	<style type="text/css">
+<!--
+.bgclr {background-color: white; color: black; font-weight: bold;}
+-->
+</style>
 
 		
+
+
+
 </head>
 <body>
  <!--
@@ -24,16 +31,31 @@
 	
 </section>
 -->
- 
-<div id="timer-display">Time Remaining: 30</div>
+  <style>
+    body {
+      background: lightgrey;
+    }
+    #image-holder{
+      width:400px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    #buttons{
+      text-align: center;
+      margin: 50px 0;
+    }
+    button{
+      width:300px;
+      height:100px;
+    }
+  </style>
 
-<section id="main-container"
+<div id="buttons">
+    <button id="start"><h2>Start</h2></button>
+</div>
 
-	<div id="buttons">
-    	<button id="start"><h2>Start</h2></button>
-  	</div>
+<div id="timer-display"> Time Remaining: 30</div>
 
-</section>
 
 <h3>Web Design Quiz</h3>
 
@@ -64,25 +86,94 @@
   <li><input type="radio" name="q4" value="Common Gateway Interface">Common Gateway Interface</li>
 </ul>
 
-<!--
 <button id="done"><h2>Done</h2></button>
--->
-<input type="button" value="Done" onClick="getScore(this.form)">
+<!--
+<input type="button" value="Get score" onClick="getScore(this.form)">
 <input type="reset" value="Clear answers">
 <p> Score = <strong><input class="bgclr" type="text" size="5" name="percentage" disabled></strong><br><br>
 Correct answers:<br>
 <textarea class="bgclr" name="solutions" wrap="virtual" rows="4" cols="30" disabled>
 </textarea>
 </form>
+-->
 
 
 
 </body>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
-<script type="text/javascript" src="assets/javascript/app.js"></script>
+<script type="text/javascript" src="app.js"></script>
 <script language="JavaScript">
 
+window.onload = function(){
+  $('#start').on('click', timer.start);
+};
+
+var timer = {
+  time:30,
+  reset: function(){
+    timer.time = 30;
+    $('#timer-display').html('Time Remaining: 30');
+  },
+  start: function(){
+    counter = setInterval(timer.count, 1000);
+  },
+  count: function(){
+    timer.time--;
+    $('#timer-display').html('Time Remaining: ' + timer.time);
+  },
+  timeUp: function(){
+  	//empty main container, display results
+  }
+};
+
+
+
+		<!-- This script and many more are available free online at -->
+		<!-- The JavaScript Source!! http://www.javascriptsource.com -->
+
+		<!-- Begin
+		// Insert number of questions
+		var numQues = 4;
+
+		// Insert number of choices in each question
+		var numChoi = 3;
+
+		// Insert number of questions displayed in answer area
+		var answers = new Array(4);
+
+		// Insert answers to questions
+		answers[0] = "Cascading Style Sheets";
+		answers[1] = "Dynamic HTML";
+		answers[2] = "Netscape";
+		answers[3] = "Common Gateway Interface";
+
+		// Do not change anything below here ...
+		function getScore(form) {
+		  var score = 0;
+		  var currElt;
+		  var currSelection;
+		  for (i=0; i<numQues; i++) {
+		    currElt = i*numChoi;
+		    for (j=0; j<numChoi; j++) {
+		      currSelection = form.elements[currElt + j];
+		      if (currSelection.checked) {
+		        if (currSelection.value == answers[i]) {
+		          score++;
+		          break;
+		        }
+		      }
+		    }
+		  }
+		  score = Math.round(score/numQues*100);
+		  form.percentage.value = score + "%";
+		  var correctAnswers = "";
+		  for (i=1; i<=numQues; i++) {
+		    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+		  }
+		  form.solutions.value = correctAnswers;
+		}
+		//  End -->
 </script>
 
 </html>

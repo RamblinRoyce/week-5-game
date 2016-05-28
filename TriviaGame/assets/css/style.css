@@ -11,6 +11,7 @@ body {
 	/*
 	background-size: 1600px 960px;
 	*/
+	background: lightgrey;
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
@@ -24,3 +25,13 @@ body {
 	height: 500px;
 	margin: 100px;
 }
+
+#buttons{
+  text-align: center;
+  margin: 50px 0;
+}
+button{
+  width:300px;
+  height:100px;
+}
+
