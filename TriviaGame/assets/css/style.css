@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* YOUR CSS GOES HERE*/
+
+body {
+	width: 960px;
+	font-size: 18px;
+	/*
+	background-size: 1600px 960px;
+	*/
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+.main-container {
+	background: #777;
+	display: block;
+	float: center;
+	width: 700px;
+	overflow: hidden;
+	height: 500px;
+	margin: 100px;
+}
